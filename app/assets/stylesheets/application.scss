@@ -1,0 +1,301 @@
+.devise-bootstrap-form {
+    @extend .container !optional;
+}
+
+.devise-bootstrap-form-col {
+    @extend .col-12 !optional;
+    @extend .col-sm-8 !optional;
+    @extend .col-lg-6 !optional;
+}
+
+.devise-bootstrap-form-row {
+    @extend .row !optional;
+    @extend .justify-content-around !optional;
+}
+
+body{
+    margin-top:25px;
+    background: #ffffff;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 0 solid #eeeeee;
+    border-radius: 1px;
+
+}
+.card-h {
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.42), -1px 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.card-h-profile .card-header {
+    height: 9rem;
+    background-size: cover;
+    background-position: center center
+}
+
+.card-h-profile-img {
+    max-width: 8rem;
+    margin-top: -6rem;
+    margin-bottom: 1rem;
+    border: 3px solid #fff;
+    border-radius: 100%
+}
+
+.avatar {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    display: inline-block;
+    background: #ced4da no-repeat center/cover;
+    position: relative;
+    text-align: center;
+    color: #868e96;
+    font-weight: 600;
+    vertical-align: bottom
+}
+
+.avatar.avatar-md {
+    width: 3rem;
+    height: 3rem
+}
+
+.avatar.avatar-lg {
+    width: 4rem;
+    height: 4rem
+}
+
+.avatar.avatar-xl {
+    width: 5rem;
+    height: 5rem
+}
+
+.avatar.avatar-xxl {
+    width: 12rem;
+    height: 12rem;
+    min-width: 7rem
+}
+
+.card-h-header:first-child {
+    border-radius: 0 0 0 0;
+}
+
+.card-h-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+.card-header {
+    padding: 1rem 1.25rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.card-h-header {
+    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.05);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.05);
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.card {
+    width: 450px;
+    height: 250px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px -8px rgb(0, 0, 0);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    margin: 1.5rem;
+}
+
+.card h1 {
+    text-align: center;
+}
+
+.card .additional {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    transition: width 0.4s;
+    overflow: hidden;
+    z-index: 2;
+ }
+
+
+.card .additional {
+    width: 100%;
+    border-radius: 0 5px 5px 0;
+}
+
+.card .additional .user-card {
+    width: 150px;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+
+.card .additional .user-card::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10%;
+    right: -2px;
+    height: 80%;
+    border-left: 2px solid rgba(0,0,0,0.025);
+}
+
+.card .additional .user-card .level,
+.card .additional .user-card .points {
+    top: 15%;
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: bold;
+    background: rgba(0,0,0,0.15);
+    padding: 0.125rem 0.75rem;
+    white-space: nowrap;
+}
+
+.card .additional .user-card .points {
+    top: 85%;
+}
+
+.card .additional .user-card svg {
+    top: 50%;
+}
+
+.card .additional .more-info {
+    width: 300px;
+    float: left;
+    position: absolute;
+    left: 150px;
+    height: 100%;
+}
+
+.card .additional .more-info h1 {
+    color: #000000;
+    margin-bottom: 0;
+}
+
+.card .additional .coords {
+    margin: 0 1rem;
+    color: #000000;
+    font-size: 1rem;
+}
+
+.card .additional .coords span + span {
+    float: right;
+}
+
+.card .additional .stats {
+    font-size: 2rem;
+    display: flex;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    top: auto;
+    color: #000000;
+}
+
+.card .additional .stats > div {
+    flex: 1;
+    text-align: center;
+}
+
+.card .additional .stats i {
+    display: block;
+}
+
+.card .additional .stats div.title {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card .additional .stats div.value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+}
+
+.card .additional .stats div.value.infinity {
+    font-size: 2.5rem;
+}
+
+.card .general {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 1rem;
+    padding-top: 0;
+}
+
+.card .general .more {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.9em;
+}
+
+.img-thumbnail{
+    width:110px;
+    height:110px;
+    margin-top: 50%;
+}
+
+.send-rec  {
+    margin: 0 1rem;
+    font-size: 1rem!important;
+}
+
+.one-more {
+    position:fixed;
+}
+
+.direct-upload {
+    display: inline-block;
+    position: relative;
+    padding: 2px 4px;
+    margin: 0 3px 3px 0;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.direct-upload--pending {
+    opacity: 0.6;
+}
+
+.direct-upload__progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0.2;
+    background: #0076ff;
+    transition: width 120ms ease-out, opacity 60ms 60ms ease-in;
+    transform: translate3d(0, 0, 0);
+}
+
+.direct-upload--complete .direct-upload__progress {
+    opacity: 0.4;
+}
+
+.direct-upload--error {
+    border-color: red;
+}
+
+input[type=file][data-direct-upload-url][disabled] {
+    display: none;
+}

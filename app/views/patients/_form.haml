@@ -1,0 +1,5 @@
+%div{"data-action" => "change->doctor_category#greet", "data-controller" => "doctor_category", "data-doctor_category-my-value" => "/categories"}
+  = form_with do |f|
+    = f.collection_select :id, Category.all, :id, :name, { prompt: 'Select category of doctor' }
+  %div{"data-action" => "click->doctor_category#clear"}
+    %button Clear

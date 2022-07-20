@@ -1,0 +1,23 @@
+document.getElementById('show-doctors').innerHTML = '<% @doctors_by_category.each do |user| %> \
+    <div class="card green row" id="<%= user.doctor_id %>"> \
+      <div class="additional"> \
+        <div class="user-card"> \
+          <div class="points center">Doctor</div> \
+          <img src="<%= avatar_for(user) %>" class="img-fluid d-block mx-auto rounded-circle img-thumbnail mb-4"> \
+        </div> \
+        <div class="more-info"> \
+          <h1><%= user.first_name %> <%= user.last_name %></h1> \
+          <div class="coords"> \
+            <span>Phone Number</span> \
+            <span><%= user.phone_num %></span> \
+          </div> \
+          <div class="coords">\
+            <div data-controller="make_appointment" data-make_appointment-my-value="<%= user.doctor_id %>" data-action="click->make_appointment#greet"> \
+              <button>Make an appointment</button> \
+            </div> \
+            <div id="messages">\
+            </div>\
+          </div>\
+        </div> \
+      </div> \
+    </div><% end %>'

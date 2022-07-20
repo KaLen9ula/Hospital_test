@@ -1,0 +1,23 @@
+$('#show-doctors #<%=@doctor_id%> #messages').text('<%=@messages %>')
+<%if @messages!='You have already created an appointment' %>
+$('#added-appointments').html('<%if @appointment%> \
+    <div class="card">\
+      <div class="additional">\
+        <div class="user-card">\
+          <div class="level center">Doctor</div>\
+          <div class="points center"><%= @appointment.doctor.category.name %></div>\
+          <img src="<%= avatar_for(@appointment.doctor.user) %>" class="img-fluid d-block mx-auto rounded-circle img-thumbnail mb-4">\
+        </div>\
+        <div class="more-info">\
+          <h1><%= @appointment.doctor.user.first_name %> <%= @appointment.doctor.user.last_name %></h1>\
+          <div class="coords">\
+            <span>Phone number</span>\
+            <span><%= @appointment.doctor.user.phone_num %></span>\
+          </div>\
+          <div class="coords">\
+            <span>Awaiting doctors recommendation</span>\
+          </div>\
+          <div class="coords">\
+            <span>Status</span>\
+            <span>Session started</span>\
+          </div><%end %>')<% end%>

@@ -1,0 +1,114 @@
+.container
+  .row
+    .col-lg-4
+      .card-h.card-h-profile
+        .card-body.text-center
+          %span.avatar.avatar-xxl.mr-7{:style => "background-image: url(#{avatar_for(@user)})"}
+          - if current_user
+            = button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-secondary", html: { data: { turbo: false } }
+          - if can? :read, @patient
+            %h3.mb-3
+              = @user.first_name
+              = @user.last_name
+            %h3.mb-4 Patient
+          - if can? :read, @doctor
+            %h3.mb-3
+              = @user.first_name
+              = @user.last_name
+            %p.mb-4 Doctor
+            - if @doctor.category
+              %p.mb-4= @doctor.category.name
+      .card-h
+        .card-body
+          = form_with(model: Avatar.new, url: avatar_index_path, html: { method: :post },) do |f|
+            %span.avatar.avatar-xl.mr-3{:style => "background-image: url(#{avatar_for(@user)})"}
+              = f.file_field :image, style: 'all: none; position: relative; padding-left: 100px;'
+            = f.submit "Upload avatar"
+      = form_with(model: @user, url: registration_path(@user), html: { method: :put },) do |f|
+        .card-h
+          .card-h-header
+            %h3.card-title.ml-2 My Profile
+          .card-body
+            .row.mb-3
+              .col
+                .form-group
+                  %label.form-label First Name
+                  = f.text_field :first_name, placeholder: "First name", value: @user.first_name, class: "form-control"
+            .form-group
+              %label.form-label Last Name
+              = f.text_field :last_name, placeholder: "Last name", value: @user.last_name, class: "form-control"
+            .form-group
+              %label.form-label Email
+              = f.email_field :email, placeholder: "email@examle.com", value: @user.email, class: "form-control"
+            .form-group
+              %label.form-label Phone number
+              = f.telephone_field :phone_num, placeholder: "+38(000-000-000)", value: @user.phone_num, class: "form-control"
+          .card-footer.text-right
+            %button.btn.btn-success Save
+          = render "devise/shared/error_messages", resource: @user
+    .col-lg-8
+      - if can? :read, @doctor
+        - if @appointments
+          - @appointments.each do |user|
+            %div{:id => user.patient_id}
+              .card
+                .additional
+                  .user-card
+                    .points.center
+                      Patient
+                    %img.img-fluid.d-block.mx-auto.rounded-circle.img-thumbnail.mb-4{:src => avatar_for(user)}/
+                  .more-info
+                    %h1
+                      = user.first_name
+                      = user.last_name
+                    .coords
+                      %span Phone Number
+                      %span= user.phone_num
+                    .coords
+                      - if user.email?
+                        %span Email:
+                        %span= user.email
+                      %div{"data-controller" => "create_recommendation", "data-create_recommendation-my-value" => user.patient_id, "data-create_recommendation-my-value2" => @doctor.id}
+                        %textarea{:cols => "26", :name => "send_recommendation", :rows => "2"}
+                        %center
+                          %button.send-rec{"data-action" => "click->create_recommendation#greet"}
+                            Send recommendation
+      - if can? :read, @patient
+        #column.col-lg-8
+          - if can? :index, @patient
+            = render 'form'
+          #show-doctors.row
+          - if @appointments
+            - @appointments.each do |user|
+              .row{:id => user.doctor_id}
+                .card
+                  .additional
+                    .user-card
+                      .level.center
+                        Doctor
+                      .points.center
+                        = user.doctor[0].category.name
+                      %img.img-fluid.d-block.mx-auto.rounded-circle.img-thumbnail.mb-4{:src => avatar_for(user)}/
+                    .more-info
+                      %h1
+                        = user.first_name
+                        = user.last_name
+                      .coords
+                        %span Phone number
+                        %span= user.phone_num
+                      - if !user.get_recommendation(user.doctor_id, @patient.id)
+                        .coords
+                          %span Awaiting doctor's recommendation
+                        .coords
+                          %span Status
+                          %span Session started
+                      - else
+                        .coords
+                          %span Status
+                          %span Session ended
+                        .coords
+                          %span
+                            Recommendations from doctor:
+                            %br/
+                            = (user.get_recommendation(user.doctor_id, @patient.id))
+          #added-appointments.row
