@@ -16,8 +16,8 @@ elsif Rails.env.test?
 else
   require "shrine/storage/s3"
   s3_options = {
-    access_key_id: Rails.application.credentials[:aws][:access_key_id],
-    secret_access_key: Rails.application.credentials[:aws][:secret_access_key],
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
     region: "eu-central-1",
     bucket: 'mykola-hospital-test'
   }
